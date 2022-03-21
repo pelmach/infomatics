@@ -33,20 +33,31 @@ public class task7 {
             matrix[i][0] = k;
             k++;
         }
-        for (int i = 2; i < matrix.length - 1; i++) {
-            matrix[i][i - 1] = k;
-            k++;
+        int num = (int) ((Math.pow(matrix.length, 2) - matrix.length)/2 + matrix.length);
+        System.out.println(num);
+        int i = 2;
+        int j = 1;
+        while (k < num){
+            while (matrix[i + 1][j + 1] == 0){
+                matrix[i][j] = k;
+                k++;
+                i++;
+                j++;
+            }
+            while (matrix[i][j - 1] == 0){
+                matrix[i][j] = k++;
+                j--;
+            }
+            while (matrix[i - 1][j] == 0){
+                matrix[i][j] = k;
+                k++;
+                i--;
+            }
+            if(matrix[i][j] == 0){
+                matrix[i][j] = k;
+            }
         }
-        for (int i = matrix.length - 3; i > 1; i--) {
-            matrix[matrix.length - 2][i - 1] = k;
-            k++;
-        }
-        for (int i = matrix.length - 2; i > 2; i--) {
-            matrix[i][1] = k;
-            k++;
-        }
-
-
         MatrOutput(matrix);
     }
+
 }
